@@ -1,0 +1,25 @@
+program my_program
+var
+    c: real; 
+    x1: real; 
+    x: real; 
+    result: real; 
+    result2: real; 
+    
+    a: integer;
+    b: integer;
+    step: boolean;
+begin
+    a = 3 + a; 
+    b = -10;
+    c = a ^ b; 
+    if (c + )
+        step = true;
+        write(step); 
+result = 2.2E+4;
+    for (i = 1 by 1 to 3) do
+        result = result + 1;
+        write(result); 
+    rof
+result2 = c - b + a / 1; 
+end

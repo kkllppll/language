@@ -1,0 +1,56 @@
+Program = program ProgName DeclSection DoSection 
+ProgName = Ident 
+Ident = Letter {Letter | Digit | UnderScore}
+DeclSection = var DeclarList
+DeclarList = Declaration {’;’ Declaration }
+Declaration = IdenttList ’:’ Type
+IdenttList = Ident {’,’ Ident}
+Type = integer | real | boolean
+DoSection = begin StatementList ’end’
+StatementList = Statement {’;’ Statement } ';' 
+Statement = Assign | Inp | Out | ForStatement | IfStatement
+Assign = Ident ’=’ Expression
+Expression = ArithmExpression | BoolExpr
+BoolExpr = ArithmExpression RelOp ArithmExpression 
+ArithmExpression = [ Sign] Term
+| ArithmExpression ’+’ Term
+| ArithmExpression ’-’ Term
+Term = Factor | Term '*' Factor | Term '/' Factor | Term '^' Power
+Power = Factor ['^' Power]
+Factor = Ident | Const | ’(’ ArithmExpression ’)’
+Inp = read ’(’ IdenttList ’)’
+Out = write ’(’ IdenttList ’)’
+ForStatement = for '(' IndExpr ')' do DoBlock rof
+IndExpr = Ident ’:=’ ArithmExpression1 by ArithmExpression2 to ArithmExpression3
+ArithmExpression1 = ArithmExpression
+ArithmExpression2 = ArithmExpression
+ArithmExpression3 = ArithmExpression
+DoBlock = Statement | ’begin’ StatementList ’end’
+IfStatement = if '(' Condition ')' StatementBlock }
+Condition = ArithmExpression RelOp ArithmExpression
+StatementBlock = Statement | 'begin' StatementList 'end'
+Const = IntNumb | RealNumb | BoolConst
+IntNumb = [Sign] UnsignedInt
+RealNumb = [Sign] UnsignedReal
+Sign = ’+’ | ’-’
+UnsignedInt = Digit {Digit}
+UnsignedReal = UnsignedInt ’.’ UnsignedInt 
+| UnsignedInt ’.’ UnsignedInt ‘E’ IntNumber
+ BoolConst = true | false
+Letter = ’a’ | ’b’ | ’c’ | ’d’ | ’e’ | ’f’ | ’g’ | ’h’ | ’i’ | ’j’| ’k’ | ’l’ | ’m’ | ’n’ | ’o’ | ’p’ | ’q’ | ’r’ | ’s’ | ’t’| ’u’ | ’v’ | ’w’ | ’x’ | ’y’ | ’z’
+Digit = ’0’ | ’1’ | ’2’ | ’3’ | ’4’ | ’5’ | ’6’ | ’7’ | ’8’ | ’9’
+SpecSsign = ’.’ | ’,’ | ’:’ | ’;’ | ’(’ | ’)’| ’=’ | ’+’ | ’-’ | ’*’ | ’/’ | ’<’ | ’>’ |’^’| ‘{‘| ‘}’| '_' | ‘!’ | WhiteSpace | EndOfLine
+WhiteSpace = ’ ’ | ’\t’
+EndOfLine = ’\n’
+SpecSymbols = ArithOp | RelOp | BracketsOp | AssignOp | Punct
+ArithOp = AddOp | MultOp
+AddOp = ’+’ | ’-’
+MultOp = ’*’ | ’/’
+RelOp = ’==’ | ’<= ’ | ’<’ | ’>’ | ’>=’ | ’!=’
+BracketsOp = ’(’ | ’)’ | ‘{‘ | ‘}’
+AssignOp = ’=’
+Punct = ’.’ | ’,’ | ’:’ | ’;’| '_'
+KeyWords = program | var | begin | end | integer
+| real | boolean | read | write | for | to | do | by | rof | if
+
+  
